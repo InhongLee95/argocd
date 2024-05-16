@@ -7,7 +7,7 @@ metadata:
   labels:
     app: springboot
 spec:
-  replicas: 3  # 변경 가능: 원하는 파드 수
+  replicas: 1  # 변경 가능: 원하는 파드 수
   selector:
     matchLabels:
       app: springboot
