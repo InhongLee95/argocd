@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: springboot
-        image: leeinhong9512/github-actions-demo:v1  # Docker 이미지
+        image: leeinhong9512/github-actions-demo:latest  # Docker 최신 이미지
         ports:
         - containerPort: 8080  # Spring Boot가 사용하는 포트
 
