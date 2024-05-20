@@ -1,42 +1,41 @@
-# springboot-deployment.yaml
-
+# nginx-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springboot-deployment
+  name: nginx-deployment
   labels:
-    app: springboot
+    app: nginx
 spec:
-  replicas: 1  # 변경 가능: 원하는 파드 수
+  replicas: 2  # 변경 가능: 원하는 파드 수
   selector:
     matchLabels:
-      app: springboot
+      app: nginx
   template:
     metadata:
       labels:
-        app: springboot
+        app: nginx
     spec:
       containers:
-      - name: springboot
-        image: leeinhong9512/github-actions-demo:latest  # Docker 최신 이미지
+      - name: nginx
+        image: feed1119/github-52panda-ci-test:latest  # Nginx 이미지
         ports:
-        - containerPort: 8080  # Spring Boot가 사용하는 포트
+        - containerPort: 80  # Nginx가 사용하는 포트
 
 ---
 
-# springboot-service.yaml
+# nginx-service.yaml
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: springboot-service
+  name: nginx-service
 spec:
   selector:
-    app: springboot
+    app: nginx
   ports:
     - protocol: TCP
-      port: 8080  # 서비스에 노출되는 포트
-      targetPort: 8080  # 파드에 포워딩되는 포트
+      port: 80  # 서비스에 노출되는 포트
+      targetPort: 80  # 파드에 포워딩되는 포트
       nodePort: 31000  # 변경 가능: 노드 포트 번호 (30000 ~ 32767 사이의 값을 선택)
   type: NodePort  # 서비스 유형을 NodePort로 변경
   
