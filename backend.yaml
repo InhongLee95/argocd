@@ -37,5 +37,6 @@ spec:
     - protocol: TCP
       port: 8080  # 서비스에 노출되는 포트
       targetPort: 8080  # 파드에 포워딩되는 포트
+      nodePort: 31000  # 변경 가능: 노드 포트 번호 (30000 ~ 32767 사이의 값을 선택)
   type: NodePort  # 서비스 유형을 NodePort로 변경
-  nodePort: 31000  # 변경 가능: 노드 포트 번호 (30000 ~ 32767 사이의 값을 선택)
+  
